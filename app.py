@@ -4,9 +4,7 @@ from dotenv import load_dotenv
 import streamlit as st
 
 
-load_dotenv(override=True)
-
-API_KEY = os.getenv('OPENAI_API_KEY')
+API_KEY = st.secrets["OPENAI_API_KEY"]
 BASE_URL = "https://openrouter.ai/api/v1"
 # MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
