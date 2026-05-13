@@ -8,12 +8,15 @@ load_dotenv(override=True)
 
 API_KEY = os.getenv('OPENAI_API_KEY')
 BASE_URL = "https://openrouter.ai/api/v1"
-MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
+# MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
+MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
 
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
+#---------------------------------------------------------
+st.title("Nemotron - Assistente per lo studio")
 
-richiesta = st.text_area("Scrivi la tua richiesta a Nemotron:")
+richiesta = st.text_input("Scrivi la tua richiesta a Nemotron:")
 
 completion = client.chat.completions.create(
     model=MODEL,
