@@ -13,15 +13,14 @@ MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 
 client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
+richiesta = st.input_text("Inserisci la tua richiesta")
+
 completion = client.chat.completions.create(
-                                            extra_body={},
                                             model=MODEL,
                                             messages=[
-                                                {
-                                                "role": "user",
-                                                "content": "What is the meaning of life?"
-                                                }
+                                                {"role": "system", "content": "Sei un assistente per lo studio. Cortesemente aiutami con i compiti"},
+                                                {"role": "user", "content": richiesta}
                                             ]
                                             )
-st.chat_input(completion.choices[0].message.content)
+st.write(completion.choices[0].message.content)
 
